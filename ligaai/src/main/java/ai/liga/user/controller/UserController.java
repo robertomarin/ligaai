@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,15 +122,15 @@ public class UserController {
 	}
 
 	@RequestMapping("/u/atualizar-senha")
-	public ModelAndView atualizarSenha(User user, @RequestParam String newPassword, BindingResult result,
+	public ModelAndView atualizarSenha(@RequestParam String newPassword, User user, BindingResult result,
 			HttpServletRequest request) {
 
 		User userIn = $.getUserFromRequest(request);
 		ModelAndView mav = new ModelAndView(new JsonView());
-		if (userIn == null || user == null)
+		if (userIn == null || user == null || userIn.getId() == null)
 			return mav.addObject("ok", false);
 
-		if (userIn.getId() != null && userIn.getId() != user.getId()) {
+		if (userIn.getId() != user.getId()) {
 			result.addError(new FieldError("user", "id", "Não foi possível atualizar a conta de usuário. :("));
 			return mav.addObject("errors", result.getFieldErrors());
 		}

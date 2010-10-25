@@ -37,7 +37,7 @@
 											<li>
 												<a href="#" id="changePassword">Mudar senha</a>
 												<form id="changePasswordForm" class="hide">
-													<input type="password" id="actualPassword" /><br />
+													<input type="password" id="password" /><br />
 													<input type="password" id="newPassword" /> <input type="submit" value="Mudar Senha" />
 												</form>
 											</li>
