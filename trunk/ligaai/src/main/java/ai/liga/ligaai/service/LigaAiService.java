@@ -2,6 +2,7 @@ package ai.liga.ligaai.service;
 
 import java.util.Calendar;
 import java.util.Deque;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import ai.liga.dao.HibernateDAOFactory;
 import ai.liga.ligaai.dao.LigaAiDao;
 import ai.liga.ligaai.model.LigaAi;
+import ai.liga.user.model.User;
 
 @Service
 public class LigaAiService {
@@ -24,16 +26,16 @@ public class LigaAiService {
 
 	public LigaAi merge(LigaAi ligaAi) {
 		ligaAi = ligaAiDao.merge(ligaAi);
-		if (ligaAi != null && !ligaais.contains(ligaAi)) {
-			ligaais.push(ligaAi);
-		}
+		// if (ligaAi != null && !ligaais.contains(ligaAi)) {
+		// ligaais.push(ligaAi);
+		// }
 		return ligaAi;
 	}
 
 	public Deque<LigaAi> getTop() {
-		if (ligaais == null)
-			ligaais = ligaAiDao.loadAll();
-		return ligaais;
+		// if (ligaais == null)
+		// ligaais = ligaAiDao.loadAll();
+		return ligaAiDao.getTop();
 	}
 
 	public LigaAi load(Long id) {
@@ -45,15 +47,20 @@ public class LigaAiService {
 			LigaAi ligaAi = load(id);
 			if (ligaAi != null) {
 				ligaAi.setTop(Calendar.getInstance());
-				if (ligaais != null) {
-					ligaais.remove(ligaAi);
-					ligaais.push(ligaAi);
-				}
+				// if (ligaais != null) {
+				// ligaais.remove(ligaAi);
+				// ligaais.push(ligaAi);
+				// }
 
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public List<LigaAi> getTopFromUser(User user) {
+		List<LigaAi> top = ligaAiDao.getTopFromUser(user);
+		return top;
 	}
 
 }

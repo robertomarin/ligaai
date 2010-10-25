@@ -92,7 +92,9 @@
 				<div id="userList">
 					<section id="content">
 						<!--user list-->
-							<my:ligaai ligaais="${ligaais}"/>
+						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
+							<my:ligaai ligaai="${ligaai}"/>
+						</c:forEach>
 						<!--end user list-->
 						<div id="postLoader"></div>
 						<input type="hidden" id="nLigaai" value="1" />
