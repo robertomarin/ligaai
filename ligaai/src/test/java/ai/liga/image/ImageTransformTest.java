@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
@@ -61,6 +62,10 @@ public class ImageTransformTest {
 		// System.out.println("url: " + url + "type: "
 		// + new MimetypesFileTypeMap().getContentType(url.getPath()));
 
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(DigestUtils.md5Hex(new Integer(1).toString()));
 	}
 
 }

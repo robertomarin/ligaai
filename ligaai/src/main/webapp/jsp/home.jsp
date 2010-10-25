@@ -92,41 +92,7 @@
 				<div id="userList">
 					<section id="content">
 						<!--user list-->
-						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-							<article id="${ligaai.id}" class="ligaai">
-								<div class="userPic">
-									<a href="/u/conta/${ligaai.user.id}"><img src="/ligaai/avatar/${ligaai.user.id}_80.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/></a>
-								</div>
-								<div class="userInfo">
-									<header>
-										<hgroup>
-										<h1><a name="${ligaai.id}" href="#${ligaai.id}"><c:out value="${ligaai.user.name}" escapeXml="false"/></a></h1>
-										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
-										<ul>
-											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
-											<li class="${fn:toLowerCase(contact.type)}">
-												<c:if test="${fai:isLinkable(contact.type)}">
-													<a href="${fai:getUrlContact(contact)}">${contact.content}</a>
-												</c:if>
-												<c:if test="${not fai:isLinkable(contact.type) }">
-													${contact.content}
-												</c:if>
-											</li>
-											</c:forEach>
-										</ul>
-										</hgroup>
-									</header>
-								</div>
-								<div class="rating">
-									<span class="like" id="${ligaai.id}"></span>
-								</div>
-							</article>
-							<!-- Middle AD -->
-							<c:if test="${i.count eq 2}">
-								<my:middle-ad/>
-							</c:if>
-							<!-- Middle AD end -->
-						</c:forEach>
+							<my:ligaai ligaais="${ligaais}"/>
 						<!--end user list-->
 						<div id="postLoader"></div>
 						<input type="hidden" id="nLigaai" value="1" />
