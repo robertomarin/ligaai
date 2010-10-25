@@ -16,7 +16,7 @@
 						<input type="hidden" id="userId" value="${user.id}" />
 						<c:if test="${!empty param.monkey or !cutAvatar}">
 							<div class="unit avatar">
-								<img src="/ligaai/avatar/${user.id}_300.jpg" onerror="javascript: showUnavailableImage(this, '300x300')" />
+								<img src="/ligaai/avatar/${user.pathAvatar}_300.jpg" onerror="javascript: showUnavailableImage(this, '300x300')" />
 							</div>
 						</c:if>
 						<c:if test="${empty param.monkey and msg == null}">

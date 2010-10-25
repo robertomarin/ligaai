@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,7 +85,7 @@ public class ImagesTransformationService {
 
 	}
 
-	public boolean cropAndResizeImage(Long idUser, int x, int y, int w, int h) {
+	public boolean cropAndResizeImage(final Long idUser, final int x, final int y, final int w, final int h) {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW + idUser + ".jpg"));
@@ -98,9 +99,9 @@ public class ImagesTransformationService {
 		if (bi != null) {
 			try {
 				BufferedImage bi300 = transform.resize(bi, 300, 300);
-				ImageIO.write(bi300, "jpg", new File(PATH_IMAGE + idUser + "_300.jpg"));
+				ImageIO.write(bi300, "jpg", new File(PATH_IMAGE + getPathAvatar(idUser) + "_300.jpg"));
 				BufferedImage bi80 = transform.resize(bi, 80, 80);
-				ImageIO.write(bi80, "jpg", new File(PATH_IMAGE + idUser + "_80.jpg"));
+				ImageIO.write(bi80, "jpg", new File(PATH_IMAGE + getPathAvatar(idUser) + "_80.jpg"));
 				bi300 = null;
 				bi80 = null;
 				bi = null;
@@ -125,6 +126,25 @@ public class ImagesTransformationService {
 		}
 
 		return transform.resize(image, (int) (image.getWidth() * percentage), (int) (image.getHeight() * percentage));
+	}
+
+	public String getPathAvatar(final Long idUser) {
+		
+		String md5IdUser = DigestUtils.md5Hex(idUser.toString());
+		char[] charArray = md5IdUser.toCharArray();
+		
+		File file = new File(PATH_IMAGE + charArray[0]);
+		
+		if (!file.exists()) {
+			file.mkdir();
+		}
+		
+		file = new File(PATH_IMAGE + charArray[0] + "/" + charArray[1]);
+		if (!file.exists()) {
+			file.mkdir();
+		}
+		
+		return charArray[0] + "/" + charArray[1] + "/" + idUser;
 	}
 
 }

@@ -86,9 +86,8 @@ public class UploadAvatarController {
 		ModelAndView mav = new ModelAndView("/u/conta");
 
 		if (imageService.cropAndResizeImage(user.getId(), x, y, w, h)) {
-			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
-
 			userService.giveAvatar(user);
+			$.setUserOnRequest(request, user);
 			return mav.addObject("ok", true);
 		}
 

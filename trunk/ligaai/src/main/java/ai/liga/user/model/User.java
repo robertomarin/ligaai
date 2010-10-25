@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -41,7 +42,7 @@ public class User {
 	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 e 20 caracteres")
 	@NotNull(message = "Senha deve ser preenchida")
 	@XStreamOmitField
-	private String password;	
+	private String password;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)
@@ -109,6 +110,16 @@ public class User {
 
 	public boolean isAvatar() {
 		return avatar;
+	}
+
+	public String getPathAvatar() {
+		if (id != null) {
+			String md5IdUser = DigestUtils.md5Hex(id.toString());
+			char[] charArray = md5IdUser.toCharArray();
+			return charArray[0] + "/" + charArray[1] + "/" + id;
+		}
+
+		return null;
 	}
 
 }
