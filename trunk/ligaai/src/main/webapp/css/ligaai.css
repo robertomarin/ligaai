@@ -227,6 +227,7 @@ h1.ligaStyle{color: #000;}
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
+#postLoader{text-align: center; width: 100%;}
 
 /*advertisiment*/
 #content .middleAd{width: 465px; margin: 15px auto;}
