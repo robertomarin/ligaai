@@ -169,22 +169,22 @@ h1.ligaStyle{color: #000;}
 
 /***User list***/
 #userList{background: #fff; float: left; width: 100%;}
-#content .users{line-height: 20px;}
-#content .users:last-child{border: 0;}
-#content .users div{float: left;}
-#content .users div.userPic{width: 13%;}
-#content .users .userInfo{width: 60%;}
-#content .users .rating{float: right; width: auto;}
-#content .users h1 a{
+#content .ligaai{line-height: 20px;}
+#content .ligaai:last-child{border: 0;}
+#content .ligaai div{float: left;}
+#content .ligaai div.userPic{width: 13%;}
+#content .ligaai .userInfo{width: 60%;}
+#content .ligaai .rating{float: right; width: auto;}
+#content .ligaai h1 a{
 	font-size: 30px;
 	letter-spacing: -1.5px;
 	margin-bottom: 5px;
 	color: #000;
 	text-decoration: none;
 }
-#content .users h1 a:hover{text-decoration: underline;}
-#content .users h2{color: #ff00cc; font-size: 20px;}
-#content .users h3{font-weight: normal; font-size: 17px; font-style: italic;}
+#content .ligaai h1 a:hover{text-decoration: underline;}
+#content .ligaai h2{color: #ff00cc; font-size: 20px;}
+#content .ligaai h3{font-weight: normal; font-size: 17px; font-style: italic;}
 #content .userInfo ul{margin: 20px 0;}
 #content .userInfo li{margin-bottom: 3px;}
 #content .userInfo a:hover{text-decoration: underline;}
@@ -199,8 +199,8 @@ h1.ligaStyle{color: #000;}
 #content .userInfo li.phone{background-position: 0 -468px;}
 #content .userInfo li.msn{background-position: 0 -40px;}
 #content .userInfo li.email{background-position: 0 -72px;}
-#content .users .rating{background: #eee; padding: 5px;}
-#content .users .rating span{
+#content .ligaai .rating{background: #eee; padding: 5px;}
+#content .ligaai .rating span{
 	background: url(/img/buttons.png) 0 -318px no-repeat;
 	cursor: pointer;
 	display: block;
@@ -210,10 +210,10 @@ h1.ligaStyle{color: #000;}
 	width: 26px;
 	position: relative;
 }
-#content .users .rating span.dislike{background-position: 0 -356px;}
-#content .users .rating span:hover{background-position: 0 -396px;}
-#content .users .rating span.dislike:hover{background-position: 0 -435px;}
-#content .users .rating .likeError{
+#content .ligaai .rating span.dislike{background-position: 0 -356px;}
+#content .ligaai .rating span:hover{background-position: 0 -396px;}
+#content .ligaai .rating span.dislike:hover{background-position: 0 -435px;}
+#content .ligaai .rating .likeError{
 	background: #000;
 	color: #fff;
 	position: absolute;
