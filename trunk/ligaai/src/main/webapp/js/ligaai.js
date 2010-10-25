@@ -624,8 +624,9 @@ $(function() {
 	 
 	 $('#changePasswordForm').submit(function(){
 		 var url = '/u/atualizar-senha?'
-				+ 'password=' + encodeUrl($(this).find('#actualPassword').val())
-				+ '&newPassword=' + encodeUrl($(this).find('#newPassword').val());
+			 + 'id=' + encodeUrl($('#userId').val())
+			 + '&password=' + encodeUrl($(this).find('#password').val())
+			 + '&newPassword=' + encodeUrl($(this).find('#newPassword').val());
 		 $.get(url, function(data){
 			if(data.erros){
 				for(i = 0; i < data.errors.length; i++) {
@@ -679,7 +680,6 @@ $(function() {
 	 /*
 	  * Cortar Avatar
 	  */
-	 
 	 $('#cutAvatar').click(function(e){
 		 $('#avatarAtual').hide();
 		 $('#cropAvatar').removeClass('hide').show();
