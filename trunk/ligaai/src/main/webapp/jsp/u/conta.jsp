@@ -32,8 +32,7 @@
 								</c:if>
 									<ul class="unit">
 										<c:if test="${himself}">
-											<li><c:out value="${us	er.email}"></c:out></li>
-<!--											<li><a href="#" id="cutAvatar">Recortar avatar atual</a></li>-->
+											<li><c:out value="${user.email}"></c:out></li>
 											<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
 											<li>
 												<a href="#" id="changePassword">Mudar senha</a>
