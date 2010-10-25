@@ -313,6 +313,12 @@ function showUnavailableImage(target,size){
 	target.src="/img/"+size+"_indisponivel.png";
 }
 
+function openDefaultLightbox(msg){
+	var $lb = $('#lightboxMessage');
+	$lb.find('#txt').html(msg);
+	$lb.dialog('open');
+}
+
 $(function() {
 	/**
 	 * Lazy load
@@ -471,7 +477,7 @@ $(function() {
 			if($('#agree').is(':checked')){
 				if($.cookie('u') != null){
 					formData = {};
-					$(this).find(':input').each(function(){
+					$(this).find(':input').not('.sendButton, #needsubscribe, #cloneable :input').each(function(){
 						formData[$(this).attr('name')] = $.trim($(this).val());
 					});
 					
@@ -492,22 +498,22 @@ $(function() {
                                         (user.avatar == true) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
                                         $('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1><a href="#">' + user.name + '</a></h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
                                     }else{
-                                        alert('Não foi possivel postar no momento, por favor tente mais tarde');
+                                    	openDefaultLightbox('Não foi possivel postar no momento, por favor tente mais tarde');
                                     }
                             	},
 							error: function() {
-								alert('Não foi possivel postar no momento, por favor tente mais tarde');
+                            	openDefaultLightbox('Não foi possivel postar no momento, por favor tente mais tarde');
 							}
 						}
 						$.ajax(params);
 					}else{
-						alert('Por favor, preencha pelo menos um contato')
+						openDefaultLightbox('Por favor, preencha pelo menos um contato')
 					};
 				}else{
 					$('#subscribe').dialog('open');
 				}
 			}else{
-				alert('Você deve concordar com os termos de uso');
+				openDefaultLightbox('Você deve concordar com os termos de uso');
 			}
 			return false;
 		});
@@ -546,7 +552,6 @@ $(function() {
 			if(data.errors){
 				for(i = 0; i < data.errors.length; i++) {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
-					alert(data.errors[i].defaultMessage);
 				};
 			}else{
 				window.location.reload();
@@ -558,7 +563,7 @@ $(function() {
 	 /*!
 	  * Subscribe dialog
 	 */
-	 $('#subscribe').dialog({
+	 $('.lightbox').dialog({
 		bgiframe: true,
 		autoOpen: false,
 		width: 445,
@@ -604,7 +609,7 @@ $(function() {
 	  */
 	 
 	 $('#changeAvatar').click(function(e){
-		 $('#avatarUpload').slideToggle();
+		 $('#avatarUpload').fadeIn();
 		 e.preventDefault();
 	 })
 	 
@@ -613,7 +618,7 @@ $(function() {
 	  */
 	 
 	 $('#changePassword').click(function(e){
-		 $('#changePasswordForm').slideToggle();
+		 $('#changePasswordForm').fadeIn();
 		 e.preventDefault();
 	 });
 	 
@@ -624,13 +629,13 @@ $(function() {
 		 $.get(url, function(data){
 			if(data.erros){
 				for(i = 0; i < data.errors.length; i++) {
-					alert(data.errors[i].defaultMessage);
+					openDefaultLightbox(data.errors[i].defaultMessage);
 				};
 			}
 			if(data.ok){
-				alert('Senha alterada com sucesso')
+				openDefaultLightbox('Senha alterada com sucesso')
 			}else{
-				alert('Não foi possível alterar a senha')
+				openDefaultLightbox('Não foi possível alterar a senha')
 			}
 		 });
 		 return false;
@@ -654,7 +659,7 @@ $(function() {
 		$.get(url, function(data){
 			if(data.erros){
 				for(i = 0; i < data.errors.length; i++) {
-					alert(data.errors[i].defaultMessage);
+					openDefaultLightbox(data.errors[i].defaultMessage);
 				};
 			}
 			if(data.ok){
@@ -663,13 +668,13 @@ $(function() {
 				 $('#user').html($('#newName').val()).fadeIn();
 				 return false;
 			}else{
-				alert('Não foi possível alterar o nome');
+				openDefaultLightbox('Não foi possível alterar o nome');
 			}
 		});
 		e.preventDefault();
 	 });
 	 
-	 $("#message").textlimit('span.counter',150);
+	 if($("#message").length) $("#message").textlimit('span.counter',150);
 	 
 	 /*
 	  * Cortar Avatar
