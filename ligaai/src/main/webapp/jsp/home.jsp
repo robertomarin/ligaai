@@ -80,7 +80,7 @@
 								
 								<textarea name="message" id="message" maxlength="200">Me liga.ai ;-)</textarea>
 								<div class="unit textLimit">
-									<span class="counter"></span> restantes
+									<span class="counter">150</span> restantes
 								</div>
 								<p><input type="checkbox" checked="checked" id="agree" /> <label for="agree">Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></label></p>						
 								<input type="submit" value="envia.ai" class="sendButton" />
