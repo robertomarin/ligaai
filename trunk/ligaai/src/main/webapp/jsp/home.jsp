@@ -93,7 +93,7 @@
 					<section id="content">
 						<!--user list-->
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-							<article class="ligaai">
+							<article id="${ligaai.id}" class="ligaai">
 								<div class="userPic">
 									<a href="/u/conta/${ligaai.user.id}"><img src="/ligaai/avatar/${ligaai.user.id}_80.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/></a>
 								</div>
@@ -128,6 +128,8 @@
 							<!-- Middle AD end -->
 						</c:forEach>
 						<!--end user list-->
+						<div id="postLoader"></div>
+						<input type="hidden" id="nLigaai" value="1" />
 					</section>
 					<my:side-ad />
 				</div>
