@@ -23,11 +23,13 @@
 							<div class="unit userInfo account">
 								<div class="unit userNameContainer">
 									<h1 id="user" class="userName"><c:out value="${user.name}"></c:out></h1>
-									<a href="#" id="editName">Editar</a>
+									<c:if test="${himself}"><a href="#" id="editName">Editar</a></c:if>
 								</div>
-								<form id="changeNameForm" class="hide">
-									<input type="text" id="newName" /><input type="submit" id="changeNameButton" value="Mudar Nome" />
-								</form>
+								<c:if test="${himself}">
+									<form id="changeNameForm" class="hide">
+										<input type="text" id="newName" /><input type="submit" id="changeNameButton" value="Mudar Nome" />
+									</form>
+								</c:if>
 									<ul class="unit">
 										<c:if test="${himself}">
 											<li><c:out value="${user.email}"></c:out></li>
