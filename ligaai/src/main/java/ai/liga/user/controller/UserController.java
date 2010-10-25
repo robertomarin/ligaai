@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import ai.liga.cookie.CookieComponent;
+import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.user.model.User;
 import ai.liga.user.service.UserService;
 import ai.liga.util.$;
@@ -28,12 +28,15 @@ import ai.liga.util.Constants;
 public class UserController {
 
 	private final UserService userService;
+	
+	private final LigaAiService ligaAiService;
 
 	private final CookieComponent cookieComponent;
 
 	@Autowired
-	public UserController(UserService userService, CookieComponent cookieComponent) {
+	public UserController(UserService userService, LigaAiService ligaAiService, CookieComponent cookieComponent) {
 		this.userService = userService;
+		this.ligaAiService = ligaAiService;
 		this.cookieComponent = cookieComponent;
 	}
 
@@ -58,7 +61,9 @@ public class UserController {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		return new ModelAndView("/u/conta").addObject("user", user).addObject("himself",
+		ModelAndView mav = new ModelAndView("/u/conta").addObject("user", user);
+		mav.addObject("ligaais", ligaAiService.getTopFromUser(user));
+		return mav.addObject("himself",
 				(userIn != null && userIn.getId() == user.getId()));
 	}
 
@@ -152,7 +157,7 @@ public class UserController {
 			return mav.addObject("errors", result.getFieldErrors());
 		}
 
-		userIn.setPassword(user.getPassword());
+		userIn.setPassword(newPassword);
 		return mav.addObject("ok", "true");
 	}
 

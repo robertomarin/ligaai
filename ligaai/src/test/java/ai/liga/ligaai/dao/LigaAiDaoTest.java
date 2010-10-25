@@ -1,6 +1,7 @@
 package ai.liga.ligaai.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,6 +15,7 @@ import ai.liga.dao.HibernateDAOFactory;
 import ai.liga.ligaai.model.Contact;
 import ai.liga.ligaai.model.ContactType;
 import ai.liga.ligaai.model.LigaAi;
+import ai.liga.user.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/springapp-servlet.xml" })
@@ -36,7 +38,7 @@ public class LigaAiDaoTest {
 		factory.getSessionFactory().getCurrentSession().close();
 	}
 
-	@Test
+	// @Test
 	public void mergeTest() {
 		LigaAi ligaAi = new LigaAi();
 
@@ -49,5 +51,15 @@ public class LigaAiDaoTest {
 		ligaAi.getContacts().add(contact);
 
 		ligaAiDao.merge(ligaAi);
+	}
+
+	@Test
+	public void getTopFromUser() {
+		User user = new User();
+		user.setId(1l);
+		List<LigaAi> x = ligaAiDao.getTopFromUser(user);
+		for (LigaAi ligaAi : x) {
+			System.out.println(ligaAi.getMessage());
+		}
 	}
 }
