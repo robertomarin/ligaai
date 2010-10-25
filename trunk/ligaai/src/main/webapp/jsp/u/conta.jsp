@@ -71,6 +71,9 @@
 							</form>
 						</c:if>
 					</section>
+					<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
+						<my:ligaai ligaai="${ligaai}"/>
+					</c:forEach>
 					<!-- AD -->
 					<my:side-ad />
 					<!-- AD end-->
