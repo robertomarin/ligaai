@@ -1,5 +1,5 @@
 <%@ tag body-content="empty" pageEncoding="UTF-8"%>
-<div id="subscribe">
+<div id="subscribe" class="lightbox">
 	<div class="content">
 		<div class="message hide"></div>
 		<form id="u_criar">
@@ -46,5 +46,11 @@
 				<li><input type="submit" value="envia.ai" /></li>
 			</ul>
 		</form>
+	</div>
+</div>
+
+<div id="lightboxMessage" class="lightbox">
+	<div class="content">
+		<span id="txt" />	 
 	</div>
 </div>
