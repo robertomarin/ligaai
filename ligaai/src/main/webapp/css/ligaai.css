@@ -4,7 +4,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 /**Common properties**/
 html{background: url(/img/bg_repeat_1.jpg) repeat-x 0 -12px;}
 body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
-.morningBackground{background: url(/img/bg_1.jpg) no-repeat top center;}
+body.morningBackground{background: url(/img/bg_1.jpg) no-repeat top center;}
 .wrapper{margin: 0 auto; width: 835px;}
 .hide{display: none;}
 .unit{float: left;}
@@ -252,25 +252,27 @@ h1.ligaStyle{color: #000;}
 #about p#aboutText:hover{color: #ff00cc;}
 #about #aboutContent{display: none; margin-top: 10px; height: 140px;}
 
-/***Subscribe Lightbox***/
-#subscribe{
+/***Lightbox***/
+.lightbox{
 	background: url(/img/transparentBg.png);
 	border: 1px solid transparent;
 	border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
 	display: none;
 	padding: 10px;
+	min-height: 45px !important;
 }
-#subscribe .content{
+.lightbox .content{
 	background: #fff; 
 	border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
 	padding: 15px;
 }
-#subscribe .content .ligaStyle{
+.lightbox .content .ligaStyle{
 	clear:both;
 	float:left;
 	margin-bottom:6px;
 	width:100%;
 }
+/***Subscribe Lightbox***/
 #subscribe .content .formAction{cursor: pointer;}
 #subscribe .content .formAction:hover{text-decoration: underline;}
 #subscribe .content ul{margin: 20px 0 0;}
