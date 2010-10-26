@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fai" uri="http://liga.ai/jstl/functions"%>
 <%@ attribute name="ligaai" required="true" type="ai.liga.ligaai.model.LigaAi" %>
-<%@ attribute name="avatarNomeDisable" required="false" type="java.lang.Boolean" %>
+<%@ attribute name="avatarNomeDisabled" required="false" type="java.lang.Boolean" %>
 
 <article class="ligaai">
 	<c:if test="${avatarNomeDisable}">
