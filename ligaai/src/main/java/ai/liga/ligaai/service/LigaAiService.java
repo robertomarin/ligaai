@@ -33,9 +33,16 @@ public class LigaAiService {
 	}
 
 	public Deque<LigaAi> getTop() {
+		return this.getTop(0);
+	}
+
+	public Deque<LigaAi> getTop(int start) {
+		if (start < 0) {
+			throw new IllegalStateException("Não é permitido inicio menor que 0: " + start);
+		}
 		// if (ligaais == null)
 		// ligaais = ligaAiDao.loadAll();
-		return ligaAiDao.getTop();
+		return ligaAiDao.getTop(start);
 	}
 
 	public LigaAi load(Long id) {
@@ -51,7 +58,6 @@ public class LigaAiService {
 				// ligaais.remove(ligaAi);
 				// ligaais.push(ligaAi);
 				// }
-
 				return true;
 			}
 		}

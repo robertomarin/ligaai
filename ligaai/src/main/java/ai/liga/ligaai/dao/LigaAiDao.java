@@ -34,19 +34,22 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Deque<LigaAi> getTop() {
+	public Deque<LigaAi> getTop(int start) {
 		Criteria c = super.getCriteria(true);
 		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		c.setFetchMode("ligaai", FetchMode.JOIN);
 		c.addOrder(Order.desc("top"));
-		c.setMaxResults(5);
-		
+		if (start >= 0) {
+			c.setFirstResult(start);
+		}
+		c.setMaxResults(20);
+
 		return new ArrayDeque<LigaAi>(c.list());
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<LigaAi> getTopFromUser(User user) {
-		if(user == null || user.getId() == null) {
+		if (user == null || user.getId() == null) {
 			return null;
 		}
 		Criteria c = super.getCriteria(true);

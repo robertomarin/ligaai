@@ -52,4 +52,11 @@ public class LigaAiController {
 		return mav.addObject("ok", user != null && ligaAiService.topo(id));
 	}
 
+	@RequestMapping("/l/mais/{inicio}")
+	public ModelAndView mais(@PathVariable int inicio, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("/l/mais");
+		User user = $.getUserFromRequest(request);
+		return mav.addObject("ligaais", ligaAiService.getTop(inicio));
+	}
+
 }
