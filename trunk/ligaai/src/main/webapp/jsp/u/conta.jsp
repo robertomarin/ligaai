@@ -48,7 +48,7 @@
 							<div class="containerLiga">
 								<h4>Meus últimos posts</h4>
 								<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-									<my:ligaai ligaai="${ligaai}"/>
+									<my:ligaai ligaai="${ligaai}" avatarNomeDisabled="true"/>
 								</c:forEach>
 							</div>
 						</c:if>
