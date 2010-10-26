@@ -351,7 +351,7 @@ h1.userName{font-size: 36px; letter-spacing: -1.3px; margin-bottom: 23px;}
 .account ul li a{color: #999; text-decoration: none}
 .account ul li a:hover{color: #ccc; text-decoration: underline;}
 #avatar{clear: both;}
-#avatarUpload{width: 300px; margin-left: 20px;}
+#avatarUpload{width: 245px;}
 .uploadAvatarbutton, #changePasswordForm{margin-top: 10px;}
 .userNameContainer{position: relative;}
 #editName{position: absolute; top: 35px; right: 0;}

@@ -686,7 +686,7 @@ $(function() {
 	 
 	function loadLastPost(){
 	     $('div#postLoader').html('<img src="/img/loader_avatar.gif">');
-	     $.post("/l/mais/" + $('input#nLigaai').val(), function(data){
+	     $.get("/l/mais/" + $('input#nLigaai').val(), function(data){
 	         if(data){
 	        	 $(".ligaai:last").after(data);           
 	         }
