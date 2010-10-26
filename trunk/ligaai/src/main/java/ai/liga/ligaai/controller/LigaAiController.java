@@ -37,12 +37,12 @@ public class LigaAiController {
 
 	@RequestMapping("/l/novo")
 	public ModelAndView criar(@Valid LigaAi ligaAi, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView(new JsonView());
+		ModelAndView mav = new ModelAndView("l/ligaai");
 		ligaAi.setUser($.getUserFromRequest(request));
 		ligaAi.setRemoteAddress(request.getRemoteAddr());
 		ligaAiUtils.fillTags(ligaAi);
 		ligaAi = ligaAiService.merge(ligaAi);
-		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");
+		return mav.addObject("ligaai", ligaAi);
 	}
 
 	@RequestMapping("/l/topo/{id}")

@@ -87,7 +87,6 @@ public class UploadAvatarController {
 
 		if (imageService.cropAndResizeImage(user.getId(), x, y, w, h)) {
 			userService.giveAvatar(user);
-			$.setUserOnRequest(request, user);
 			return mav.addObject("ok", true);
 		}
 
