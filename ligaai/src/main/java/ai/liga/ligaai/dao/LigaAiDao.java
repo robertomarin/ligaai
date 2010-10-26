@@ -37,12 +37,12 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 	public Deque<LigaAi> getTop(int start) {
 		Criteria c = super.getCriteria(true);
 		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		c.setFetchMode("ligaai", FetchMode.JOIN);
+		c.setFetchMode("ligaai", FetchMode.SELECT);
 		c.addOrder(Order.desc("top"));
 		if (start >= 0) {
 			c.setFirstResult(start);
 		}
-		c.setMaxResults(20);
+		c.setMaxResults(5);
 
 		return new ArrayDeque<LigaAi>(c.list());
 	}
