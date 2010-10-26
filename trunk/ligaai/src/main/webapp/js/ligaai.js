@@ -491,16 +491,10 @@ $(function() {
 							type: 'GET',
 							url: $(this).attr('action'),
 							data: formData,
-							dataType: 'json',
+							dataType: 'html',
 							success: function(data) {
-                                if(data.ok) {
-                                        var urlAvatar;
-                                        (user.avatar == true) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
-                                        $('#content').prepend('<article class="ligaai"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1><a href="#">' + user.name + '</a></h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
-                                    }else{
-                                    	openDefaultLightbox('Não foi possivel postar no momento, por favor tente mais tarde');
-                                    }
-                            	},
+                                (data) ? $('#content').prepend(data): openDefaultLightbox('Não foi possivel postar no momento, por favor tente mais tarde');
+                            },
 							error: function() {
                             	openDefaultLightbox('Não foi possivel postar no momento, por favor tente mais tarde');
 							}
@@ -692,7 +686,7 @@ $(function() {
 	 
 	function loadLastPost(){
 	     $('div#postLoader').html('<img src="/img/loader_avatar.gif">');
-	     $.post("/l/mais/" + $('input#nPagina').val(), function(data){
+	     $.post("/l/mais/" + $('input#nLigaai').val(), function(data){
 	         if(data){
 	        	 $(".ligaai:last").after(data);           
 	         }
@@ -704,6 +698,6 @@ $(function() {
         if($(window).scrollTop() == $(document).height() - $(window).height()){
         	$('input#nLigaai').val(parseInt($('input#nLigaai').val()) + 20)
         	loadLastPost();
-        }
+        };
 	}); 
 });

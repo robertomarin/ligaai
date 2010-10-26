@@ -13,7 +13,7 @@
 		    <my:header/>
 			<div class="containerShadow">
 				<div id="userList">
-					<section id="content">
+					<section id="content accountList">
 						<input type="hidden" id="userId" value="${user.id}" />
 						<c:if test="${!empty param.monkey or !cutAvatar}">
 							<div class="unit avatar">
@@ -31,19 +31,25 @@
 										<input type="text" id="newName" /><input type="submit" id="changeNameButton" value="Mudar Nome" />
 									</form>
 								</c:if>
-									<ul class="unit">
-										<c:if test="${himself}">
-											<li><c:out value="${user.email}"></c:out></li>
-											<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
-											<li>
-												<a href="#" id="changePassword">Mudar senha</a>
-												<form id="changePasswordForm" class="hide">
-													<input type="password" id="password" /><br />
-													<input type="password" id="newPassword" /> <input type="submit" value="Mudar Senha" />
-												</form>
-											</li>
-										</c:if>
-									</ul>
+								<ul class="unit">
+									<c:if test="${himself}">
+										<li><c:out value="${user.email}"></c:out></li>
+										<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
+										<li>
+											<a href="#" id="changePassword">Mudar senha</a>
+											<form id="changePasswordForm" class="hide">
+												<input type="password" id="password" /><br />
+												<input type="password" id="newPassword" /> <input type="submit" value="Mudar Senha" />
+											</form>
+										</li>
+									</c:if>
+								</ul>
+							</div>
+							<div class="containerLiga">
+								<h4>Meus últimos posts</h4>
+								<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
+									<my:ligaai ligaai="${ligaai}"/>
+								</c:forEach>
 							</div>
 						</c:if>
 						<c:if test="${msg != null}">
@@ -71,9 +77,6 @@
 							</form>
 						</c:if>
 					</section>
-					<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-						<my:ligaai ligaai="${ligaai}"/>
-					</c:forEach>
 					<!-- AD -->
 					<my:side-ad />
 					<!-- AD end-->
