@@ -93,7 +93,7 @@
 					<section id="content">
 						<!--user list-->
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-							<my:ligaai ligaai="${ligaai}"/>
+							<my:ligaai ligaai="${ligaai}" avatarNomeEnable="true"/>
 							<!-- Middle AD -->
 							<c:if test="${i.count eq 2}">
 								<my:middle-ad/>
