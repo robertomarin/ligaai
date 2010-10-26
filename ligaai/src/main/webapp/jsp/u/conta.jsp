@@ -13,7 +13,7 @@
 		    <my:header/>
 			<div class="containerShadow">
 				<div id="userList">
-					<section id="content accountList">
+					<section id="content account">
 						<input type="hidden" id="userId" value="${user.id}" />
 						<c:if test="${!empty param.monkey or !cutAvatar}">
 							<div class="unit avatar">
@@ -34,7 +34,15 @@
 								<ul class="unit">
 									<c:if test="${himself}">
 										<li><c:out value="${user.email}"></c:out></li>
-										<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
+										<li>
+											<a href="#" id="changeAvatar">Trocar avatar</a>
+											<div id="avatarUpload" class="hide unit">
+												<form method="post" action="/u/avatar/novo" enctype="multipart/form-data">
+													<input type="file" name="file"/> 
+													<input type="submit" name="Upload" class="uploadAvatarbutton"/>
+												</form>
+											</div>
+										</li>
 										<li>
 											<a href="#" id="changePassword">Mudar senha</a>
 											<form id="changePasswordForm" class="hide">
@@ -45,22 +53,18 @@
 									</c:if>
 								</ul>
 							</div>
-							<div class="containerLiga">
-								<h4>Meus últimos posts</h4>
-								<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
-									<my:ligaai ligaai="${ligaai}" avatarNomeDisabled="true"/>
-								</c:forEach>
-							</div>
+							<c:if test="${!empty param.monkey or !cutAvatar}">
+								<div class="containerLiga">
+									<h4>Meus últimos posts</h4>
+									<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
+										<my:ligaai ligaai="${ligaai}" avatarNomeDisabled="true"/>
+									</c:forEach>
+								</div>
+							</c:if> 
 						</c:if>
 						<c:if test="${msg != null}">
 							<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
 						</c:if>
-						<div id="avatarUpload" class="hide unit">
-							<form method="post" action="/u/avatar/novo" enctype="multipart/form-data">
-								<input type="file" name="file"/> 
-								<input type="submit" name="Upload" class="uploadAvatarbutton"/>
-							</form>
-						</div>
 						<c:if test="${cutAvatar or !empty param.monkey}">
 							<div id=align="center"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
