@@ -34,8 +34,3 @@
 		<span class="like" id="${ligaai.id}"></span>
 	</div>
 </article>
-<!-- Middle AD -->
-<c:if test="${i.count eq 2}">
-	<my:middle-ad/>
-</c:if>
-<!-- Middle AD end -->

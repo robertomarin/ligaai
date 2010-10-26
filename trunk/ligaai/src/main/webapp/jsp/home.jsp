@@ -94,6 +94,11 @@
 						<!--user list-->
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
 							<my:ligaai ligaai="${ligaai}"/>
+							<!-- Middle AD -->
+							<c:if test="${i.count eq 2}">
+								<my:middle-ad/>
+							</c:if>
+							<!-- Middle AD end -->
 						</c:forEach>
 						<!--end user list-->
 						<div id="postLoader"></div>

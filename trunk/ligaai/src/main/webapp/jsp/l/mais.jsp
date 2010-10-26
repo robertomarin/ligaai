@@ -6,8 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fai" uri="http://liga.ai/jstl/functions"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
-
-Macacos me mordam!
 <c:forEach items="${ligaais}" var="ligaai" varStatus="i">
 	<my:ligaai ligaai="${ligaai}"/>
 </c:forEach>
