@@ -83,11 +83,11 @@ public class UploadAvatarController {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		ModelAndView mav = new ModelAndView("/u/conta");
+		ModelAndView mav = new ModelAndView(new RedirectView("/u/avatar/novo"));
 
 		if (imageService.cropAndResizeImage(user.getId(), x, y, w, h)) {
 			userService.giveAvatar(user);
-			return mav.addObject("ok", true);
+			return new ModelAndView(new RedirectView("/u/conta"));
 		}
 
 		mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
