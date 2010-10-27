@@ -29,5 +29,20 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
+    
+    <Resource
+                name="jdbc/ligaai"
+                username="root"
+                password="root"
+                driverClassName="com.mysql.jdbc.Driver"
+                logAbandoned="true"
+                removeAbandoned="true"
+                removeAbandonedTimeout="300"
+                maxActive="10"
+                maxIdle="10"
+                maxWait="10000"
+                type="javax.sql.DataSource"
+                url="jdbc:mysql://localhost/liga_ai"
+                validationQuery="select 1" />
 
 </Context>
