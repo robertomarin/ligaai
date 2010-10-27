@@ -477,8 +477,8 @@ $(function() {
 			if($('#agree').is(':checked')){
 				if($.cookie('u') != null){
 					formData = {};
-					$(this).find(':input').not('.sendButton, #needsubscribe, #cloneable :input').each(function(){
-						formData[$(this).attr('name')] = $.trim($(this).val());
+					$.each($(this).serializeArray(), function(i, field){
+						formData[field.name] = field.value;
 					});
 					
 					if($.trim($('#firstContact').val()) != ''){
