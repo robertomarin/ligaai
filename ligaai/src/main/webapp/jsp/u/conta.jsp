@@ -66,7 +66,7 @@
 							<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
 						</c:if>
 						<c:if test="${cutAvatar or !empty param.monkey}">
-							<div id=align="center"> 
+							<div align="center"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
 			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
