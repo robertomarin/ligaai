@@ -8,7 +8,7 @@
 <%@ attribute name="avatarNomeDisabled" required="false" type="java.lang.Boolean" %>
 
 <article class="ligaai">
-	<c:if test="${avatarNomeDisable}">
+	<c:if test="${!avatarNomeDisable}">
 		<div class="userPic">
 			<a href="/u/conta/${ligaai.user.id}"><img src="/ligaai/avatar/${ligaai.user.pathAvatar}_80.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/></a>
 		</div>
@@ -16,7 +16,7 @@
 	<div class="userInfo">
 		<header>
 			<hgroup>
-			<c:if test="${avatarNomeDisable}">
+			<c:if test="${!avatarNomeDisable}">
 				<h1><a name="${ligaai.id}" href="#${ligaai.id}"><c:out value="${ligaai.user.name}" escapeXml="false"/></a></h1>
 			</c:if>
 			<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
