@@ -36,7 +36,8 @@
 										<li><c:out value="${user.email}"></c:out></li>
 										<li>
 											<a href="#" id="changeAvatar">Trocar avatar</a>
-											<div id="avatarUpload" class="hide unit">
+											<div id="avatarUpload" class="hide">
+												<a href="#" class="close">[X]</a>
 												<form method="post" action="/u/avatar/novo" enctype="multipart/form-data">
 													<input type="file" name="file"/> 
 													<input type="submit" name="Upload" class="uploadAvatarbutton"/>
@@ -45,10 +46,16 @@
 										</li>
 										<li>
 											<a href="#" id="changePassword">Mudar senha</a>
-											<form id="changePasswordForm" class="hide">
-												<input type="password" id="password" /><br />
-												<input type="password" id="newPassword" /> <input type="submit" value="Mudar Senha" />
-											</form>
+											<div id="changePasswordContainer" class="hide">
+												<a href="#" class="close">[X]</a>
+												<form id="changePasswordForm">
+													<ul>
+														<li><label for="password">Senha atual: </label><input type="password" id="password" /></li>
+														<li><label for="password">Nova senha: </label><input type="password" id="newPassword" /></li>
+														<li><input type="submit" value="Mudar Senha" /></li>
+													</ul>
+												</form>
+											</div>
 										</li>
 									</c:if>
 								</ul>
@@ -66,19 +73,19 @@
 							<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
 						</c:if>
 						<c:if test="${cutAvatar or !empty param.monkey}">
-							<div align="center"> 
+							<div class="unit containerCrop"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
 			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
 				                </div>
+				                <form action="/u/avatar/cortar" id="formCrop" onsubmit="return checkCoords();">
+									<input type="hidden" name="x" id="x" />
+									<input type="hidden" name="y" id="y" />
+									<input type="hidden" name="w" id="w" />
+									<input type="hidden" name="h" id="h" />
+									<input type="submit" value="Enviar avatar" />
+								</form>
 							</div>
-							<form action="/u/avatar/cortar" id="formCrop" onsubmit="return checkCoords();">
-								<input type="hidden" name="x" id="x" />
-								<input type="hidden" name="y" id="y" />
-								<input type="hidden" name="w" id="w" />
-								<input type="hidden" name="h" id="h" />
-								<input type="submit" value="Enviar avatar" />
-							</form>
 						</c:if>
 					</section>
 					<!-- AD -->

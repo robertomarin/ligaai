@@ -314,7 +314,7 @@ h1.ligaStyle{color: #000;}
 	left:325px;
 	overflow:hidden;
 	position:absolute;
-	top:15px;
+	top:0;
 	width:100px;
 }
 .jcrop-holder {text-align: left;}
@@ -346,12 +346,42 @@ h1.ligaStyle{color: #000;}
 h1.userName{font-size: 36px; letter-spacing: -1.3px; margin-bottom: 23px;}
 .avatar, .avatar img{width: 300px;}
 .userInfo{padding-left: 20px;}
+.account.userInfo{padding: 20px;}
+.ligaai .userInfo h3{margin-bottom: 5px;}
+.ligaai .userInfo li{margin-bottom: 5px;}
+.account article .userInfo{padding: 10px;}
 .account ul{clear: both;}
-.account ul li{background: none; padding-left: 0; margin: 4px 0;}
+.account ul li{background: none; position: relative; padding-left: 0; margin: 4px 0;}
 .account ul li a{color: #999; text-decoration: none}
 .account ul li a:hover{color: #ccc; text-decoration: underline;}
 #avatar{clear: both;}
-#avatarUpload{width: 245px;}
+#avatarUpload,
+#changePasswordContainer{
+	-moz-border-radius: 10px;
+	-webkit-border-radius :10px;
+	border-radius: 10px;
+	background: url(/img/transparentBg.png) repeat transparent;
+	left: 64px;
+	padding: 30px 15px;
+	position: absolute;
+	top: 0;
+	width: 290px;
+	z-index: 9999;
+}
+#avatarUpload .close,
+#changePasswordContainer .close{
+	color: #ccc;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	font-weight: bold;
+	text-decoration: none;
+}
+#changePasswordContainer{width: 220px;}
+#avatarUpload .close:hover,
+#changePasswordContainer .close:hover{text-decoration: underline;}
+#changePasswordContainer label{color: #fff;}
+#changePasswordContainer li{margin-bottom: 5px;}
 .uploadAvatarbutton, #changePasswordForm{margin-top: 10px;}
 .userNameContainer{position: relative;}
 #editName{position: absolute; top: 35px; right: 0;}
@@ -362,4 +392,7 @@ h1.userName{font-size: 36px; letter-spacing: -1.3px; margin-bottom: 23px;}
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 }
+.containerCrop{width: 76%; position: relative;}
+.containerCrop img{margin-left: 10px;}
 .containerLiga .ligaai{width: 100%; float: left; margin: 10px 0; border-bottom: 1px dotted #ccc; padding-bottom: 10px;}
+#formCrop{margin: 10px;}
