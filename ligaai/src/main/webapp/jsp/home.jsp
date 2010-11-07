@@ -100,6 +100,7 @@
 							</c:if>
 							<!-- Middle AD end -->
 						</c:forEach>
+						<input type="hidden" value="0" id="moreData" />
 						<!--end user list-->
 						<div id="postLoader"></div>
 						<input type="hidden" id="nLigaai" value="1" />

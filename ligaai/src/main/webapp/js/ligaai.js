@@ -345,6 +345,12 @@ $(function() {
 			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai, <span>' + user.name + '</span></h3><br /> <a href="/u/conta">Minha Conta</a> | <a href="/u/sair">Sair</a>');
 		}
 	}
+	
+	//Close
+	$('a.close').click(function(e){
+		$(this).parent().fadeOut();
+		e.preventDefault();
+	})
 
 	$('#microurl').submit(function(){
 		if($.trim($('#url').val()) != ''){
@@ -599,12 +605,23 @@ $(function() {
 	 });
 	 
 	 /**
+	  * Fechar no esc
+	  */
+	 function closeOnEscape($el){
+		 $(document).keyup(function(e){
+			 if(e.keyCode == 27) $el.fadeOut();
+		 })
+	 }
+	 
+	 /**
 	  * Trocar avatar
 	  */
 	 
 	 $('#changeAvatar').click(function(e){
-		 $('#avatarUpload').fadeIn();
 		 e.preventDefault();
+		 if($('#changePasswordContainer').is(':visible')) $('#changePasswordContainer').fadeOut();
+		 $('#avatarUpload').fadeIn();
+		 return closeOnEscape($('#avatarUpload'));
 	 })
 	 
 	 /**
@@ -612,8 +629,10 @@ $(function() {
 	  */
 	 
 	 $('#changePassword').click(function(e){
-		 $('#changePasswordForm').fadeIn();
 		 e.preventDefault();
+		 if($('#avatarUpload').is(':visible')) $('#avatarUpload').fadeOut();
+		 $('#changePasswordContainer').fadeIn();
+		 return closeOnEscape($('#changePasswordContainer'));
 	 });
 	 
 	 $('#changePasswordForm').submit(function(){
@@ -685,19 +704,19 @@ $(function() {
 	  */
 	 
 	function loadLastPost(){
-	     $('div#postLoader').html('<img src="/img/loader_avatar.gif">');
+		$('div#postLoader').html('<img src="/img/loader_avatar.gif">');
 	     $.get("/l/mais/" + $('input#nLigaai').val(), function(data){
-	         if(data){
-	        	 $(".ligaai:last").after(data);           
-	         }
+	         (data && data.match(/article/g)) ? $(".ligaai:last").after(data) : $('#moreData').val(1);
 	         $('div#postLoader').empty();
-	     });
+	     }, 'html');
 	 };
 	 
 	$(window).scroll(function(){
-        if($(window).scrollTop() == $(document).height() - $(window).height()){
-        	$('input#nLigaai').val(parseInt($('input#nLigaai').val()) + 20)
-        	loadLastPost();
+        if($('#moreData').val() == 0){
+			if($(window).scrollTop() == $(document).height() - $(window).height()){
+	        	$('input#nLigaai').val(parseInt($('input#nLigaai').val()) + 20)
+	        	loadLastPost();
+	        };
         };
 	}); 
 });
