@@ -14,12 +14,21 @@
 				<li><input id="password" type="password" /></li>
 				<li id="terms">
 					<code>
-						Terms of Service
-						These Terms of Service (“Terms”) govern your access to and use of the services and Twitter’s websites (the “Services”), and any information, text, graphics, or other materials uploaded, downloaded or appearing on the Services (collectively referred to as “Content”). Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Services you agree to be bound by these Terms.
-	
-						Basic Terms
-	
-						You are responsible for your use of the Services, for any content you post to the Services, and for any consequences thereof. The Content you submit, post, or display will be able to be viewed by other users of the Services and through third party services and websites (go to the account settings page to control who sees your Content). You should only provide Content that you are comfortable sharing with others under these Terms.
+						Termos de Serviço
+						Esses Termos de Serviço ("Termos") regem o acesso e a utilização dos serviços e site do liga.ai(os "Serviços") e de quaisquer informações, textos, imagens ou outros materiais que sejam carregados, baixados ou apareçam nos Serviços (coletivamente denominados "Conteúdo"). O acesso e a utilização dos Serviços estão condicionados à sua aceitação e obediência a esses Termos. Ao acessar ou usar os Serviços, você concorda em obedecer os termos abaixo: 
+						
+						Você é responsável pelo modo como utiliza os Serviços, por qualquer conteúdo que poste neles e por quaisquer consequências decorrentes. O Conteúdo que você envia, posta ou exibe poderá ser visto por outros usuários dos Serviços e através de sites e serviços de terceiros. Você só deve divulgar conteúdo que deseje compartilhar com outros usuários de acordo com estes Termos.
+						
+						Privacidade
+						Qualquer informação que você forneça ao liga.ai está sujeita à nossa Política de Privacidade, que controla o modo como coletamos e utilizamos suas informações. Você compreende que, por meio da utilização dos Serviços, concorda com a coleta e a utilização (conforme definidas na Política de Privacidade) destas informações, inclusive a transferência delas para os Estados Unidos e/ou outros países para fins de armazenamento, processamento e utilização por parte do liga.ai. Como parte do processo de fornecimento dos Serviços a você, pode ser que precisemos fornecer algumas comunicações, como anúncios de serviços e mensagens administrativas. Essas comunicações são consideradas parte dos Serviços e da sua conta no liga.ai; você não pode optar por não as receber.
+						
+						Informações coletadas durante o registro: Quando cria ou reconfigura uma conta do liga.ai, você fornece algumas informações pessoais. Algumas dessas informações, por exemplo nome de usuário, são listadas publicamente nos nossos Serviços, inclusive na página do seu perfil e nos resultados de pesquisas. 
+						
+						Compartilhamento e divulgação de informações
+						Provedores de serviços: Contratamos alguns fornecedores de confiança para desempenhar funções e nos prover serviços. Podemos compartilhar suas informações pessoais com esses fornecedores, mas apenas até o ponto necessário para desempenhar essas funções e prover tais serviços, e exclusivamente de acordo com as obrigações que refletem as proteções desta Política de Privacidade.
+						Lei e dano: Podemos divulgar suas informações se considerarmos que isso é até certo ponto necessário para acatar uma lei, uma norma ou uma solicitação legal; para proteger a segurança de qualquer pessoa; para solucionar problemas técnicos, de fraude ou de segurança; ou ainda para proteger direitos ou propriedade do liga.ai.
+						Transferências comerciais: Caso o liga.ai seja envolvido em falência, fusão, aquisição, reorganização ou venda de ativos, suas informações poderão ser vendidas ou transferidas como parte dessa transação. As promessas contidas nesta Política de Privacidade se aplicarão às suas informações quando forem transferidas para a nova entidade.
+						Informações não particulares ou não pessoais: Podemos compartilhar ou divulgar suas informações não particulares, agregadas ou não pessoais, como seus liga.ai públicos ou o número de usuários que clicaram em um link específico (mesmo que apenas um tenha clicado)
 					</code>
 				</li>
 				<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
