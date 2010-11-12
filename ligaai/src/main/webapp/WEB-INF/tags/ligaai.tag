@@ -19,7 +19,7 @@
 			<c:if test="${!avatarNomeDisabled}">
 				<h1><a name="${ligaai.id}" href="#${ligaai.id}"><c:out value="${ligaai.user.name}" escapeXml="false"/></a></h1>
 			</c:if>
-			<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
+			<h3><c:out value="${fai:buildLink(ligaai.message)}" escapeXml="false"/></h3>
 			<ul>
 				<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
 				<li class="${fn:toLowerCase(contact.type)}">
