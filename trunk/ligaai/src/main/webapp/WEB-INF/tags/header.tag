@@ -21,5 +21,6 @@
 		<li><label for="password">Senha</label> <input type="password" id="password" class="fill" /> <input type="submit" value="Entrar" /></li>
 			<li>Nao tem uma conta? <a href="#" id="lightboxRegister">registre-se agora.</a></li>
 		</form>
+		<div class="message hide"></div>
 	</ul>
 </header>
