@@ -430,6 +430,10 @@ $(function() {
 	});
 	
 	$('.like').click(function(e){
+		if($.cookie('u') == null){
+			alert('O usuário deve estar logado para votar.');
+			return;
+		}
 		var t = $(this);
 		$.getJSON('/l/topo/' + t.attr('id'), function(data){
 			if(data.ok) {
