@@ -35,6 +35,11 @@
 			</hgroup>
 		</header>
 	</div>
+	<c:if test="${not empty u && u.admin}">
+	<div class="remove">
+		<span class="delete" id="${ligaai.id}"></span>
+	</div>
+	</c:if>
 	<div class="rating">
 		<span class="like" id="${ligaai.id}"></span>
 	</div>

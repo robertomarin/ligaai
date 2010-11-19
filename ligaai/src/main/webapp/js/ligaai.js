@@ -319,6 +319,21 @@ function openDefaultLightbox(msg){
 	$lb.dialog('open');
 }
 
+function getUser() {
+	if($.cookie('u') != null){
+		var cookie = $.cookie('u');
+		var user;
+		if(cookie && cookie.split('|').length > 0){
+		    var user = cookie.split('|')[0];
+		    var d = $.base64Decode($.URLDecode(user));
+		    user = eval('(' + d + ')');
+		    if(user) user = user.u;
+
+		    return user;
+		}
+	}
+}
+
 $(function() {
 	/**
 	 * Lazy load
@@ -422,6 +437,23 @@ $(function() {
 			} else {
 				if(t.find('.likeError').size() == 0){
 					t.append('<div class="likeError">Não conseguimos computar seu voto! :(</div>').fadeIn();
+					setTimeout(function(){$('.likeError').fadeOut()}, 5000);
+				} else {
+					t.find('.likeError').fadeIn();
+				}
+			}
+		});
+	});
+	
+	$('.delete').click(function(e){
+		var t = $(this);
+		if(!confirm("Quer mesmo apagar o Liga.Ai id " + t.attr('id'))) return;
+		$.getJSON('/l/apagar/' + t.attr('id'), function(data){
+			if(data.ok) {
+				t.parent().fadeOut(1000);
+			} else {
+				if(t.find('.likeError').size() == 0){
+					t.append('<div class="likeError">Não conseguimos apagar o Liga.Ai! :(</div>').fadeIn();
 					setTimeout(function(){$('.likeError').fadeOut()}, 5000);
 				} else {
 					t.find('.likeError').fadeIn();

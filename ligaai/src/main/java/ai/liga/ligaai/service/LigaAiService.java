@@ -17,7 +17,7 @@ public class LigaAiService {
 
 	private LigaAiDao ligaAiDao;
 
-	private Deque<LigaAi> ligaais;
+	// private Deque<LigaAi> ligaais;
 
 	@Autowired
 	public LigaAiService(HibernateDAOFactory factory) {
@@ -67,6 +67,10 @@ public class LigaAiService {
 	public List<LigaAi> getTopFromUser(User user) {
 		List<LigaAi> top = ligaAiDao.getTopFromUser(user);
 		return top;
+	}
+
+	public void delete(Long id) {
+		ligaAiDao.delete(ligaAiDao.load(id));
 	}
 
 }
