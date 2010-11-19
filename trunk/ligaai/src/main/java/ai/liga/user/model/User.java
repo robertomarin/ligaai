@@ -57,6 +57,9 @@ public class User {
 	@Column(columnDefinition = "bit default 0")
 	private boolean avatar;
 
+	@Column(columnDefinition = "bit default 0")
+	private boolean admin;
+
 	public User() {
 	}
 
@@ -120,6 +123,14 @@ public class User {
 		}
 
 		return null;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 }

@@ -65,7 +65,7 @@ public class LigaAi {
 	private String remoteAddress;
 
 	@Null(message = "Tags não deveriam vir preenchidas.")
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private Set<Tag> tags;
 

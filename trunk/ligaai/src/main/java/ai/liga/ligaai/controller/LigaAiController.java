@@ -15,6 +15,7 @@ import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.ligaai.util.LigaAiUtils;
 import ai.liga.user.model.User;
+import ai.liga.user.service.UserService;
 import ai.liga.util.$;
 
 @Controller
@@ -24,10 +25,13 @@ public class LigaAiController {
 
 	private final LigaAiUtils ligaAiUtils;
 
+	private final UserService userService;
+
 	@Autowired
-	public LigaAiController(LigaAiService ligaAiService, LigaAiUtils ligaAiUtils) {
+	public LigaAiController(LigaAiService ligaAiService, LigaAiUtils ligaAiUtils, UserService userService) {
 		this.ligaAiService = ligaAiService;
 		this.ligaAiUtils = ligaAiUtils;
+		this.userService = userService;
 	}
 
 	@RequestMapping("/l/")
@@ -55,8 +59,22 @@ public class LigaAiController {
 	@RequestMapping("/l/mais/{inicio}")
 	public ModelAndView mais(@PathVariable int inicio, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/l/mais");
-		User user = $.getUserFromRequest(request);
 		return mav.addObject("ligaais", ligaAiService.getTop(inicio));
+	}
+
+	@RequestMapping("/l/apagar/{id}")
+	public ModelAndView apagar(@PathVariable Long id, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+
+		User u = $.getUserFromRequest(request);
+		if (u != null && (u = userService.load(u.getId())) != null && u.isAdmin()) {
+			ligaAiService.delete(id);
+			mav.addObject("ok", true);
+		} else {
+			mav.addObject("ok", false);
+		}
+
+		return mav;
 	}
 
 }

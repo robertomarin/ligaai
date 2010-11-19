@@ -42,7 +42,7 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 		if (start >= 0) {
 			c.setFirstResult(start);
 		}
-		c.setMaxResults(5);
+		c.setMaxResults(20);
 
 		return new ArrayDeque<LigaAi>(c.list());
 	}

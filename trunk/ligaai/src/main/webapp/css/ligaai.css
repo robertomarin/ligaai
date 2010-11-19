@@ -210,6 +210,17 @@ h1.ligaStyle{color: #000;}
 	width: 26px;
 	position: relative;
 }
+#content .ligaai .remove{background: #eee; padding: 5px;}
+#content .ligaai .remove span{
+	background: url(/img/buttons.png) 0 -434px no-repeat;
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 0 3px;
+	height: 23px;
+	width: 26px;
+	position: relative;
+}
 #content .ligaai .rating span.dislike{background-position: 0 -356px;}
 #content .ligaai .rating span:hover{background-position: 0 -396px;}
 #content .ligaai .rating span.dislike:hover{background-position: 0 -435px;}
