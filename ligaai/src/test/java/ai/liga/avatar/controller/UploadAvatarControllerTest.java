@@ -1,45 +1,69 @@
 package ai.liga.avatar.controller;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import junit.framework.Assert;
+import javax.servlet.http.HttpServletRequest;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ai.liga.avatar.service.ImagesTransformationService;
 import ai.liga.user.model.User;
+import ai.liga.user.service.UserService;
 import ai.liga.util.Constants;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/springapp-servlet.xml" })
 public class UploadAvatarControllerTest {
 
-	private static final MockHttpServletRequest REQUEST = new MockHttpServletRequest();
-	@Autowired
+	@Mock
+	private HttpServletRequest request;
+
+	@Mock
+	private ImagesTransformationService imageService;
+
+	@Mock
+	private UserService userService;
+	
+	@Mock
+	private MultipartFile file;
+
 	private UploadAvatarController fileUpload;
+	
+
+	@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+		fileUpload = new UploadAvatarController(imageService, userService);
+	}
 
 	@Test
-	public void testWrongFile() throws IOException {
-		
-		REQUEST.setAttribute(Constants.USER, new User());
+	public void verificaSeMessagemDeErroELancadaSeArquivoComFormatoEstranhoEEnviado() throws IOException {
+		when(request.getAttribute(Constants.USER)).thenReturn(createUser());
+		when(file.getContentType()).thenReturn("rrr/txt");
 
-		InputStream is = this.getClass().getResourceAsStream("test.txt");
-
-		MockMultipartFile mockMultipartFile = new MockMultipartFile("test", "test", "rrr/txt", is);
-
-		ModelAndView upload = fileUpload.novoAvatar(mockMultipartFile, REQUEST);
-		Map<String, Object> model = upload.getModel();
 		String expected = "Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.";
-		Assert.assertEquals(expected, model.get("msg"));
+		assertEquals(expected, fileUpload.novoAvatar(file, request).getModel().get("msg"));
+		
+		verify(imageService, never()).saveImage(any(MultipartFile.class), anyLong());
 
+	}
+
+	private User createUser() {
+		return new User();
 	}
 
 	@Test
@@ -49,7 +73,7 @@ public class UploadAvatarControllerTest {
 
 		MockMultipartFile mockMultipartFile = new MockMultipartFile("mario", "mario.png", "rrr/png", is);
 
-		ModelAndView upload = fileUpload.novoAvatar(mockMultipartFile, REQUEST);
+		ModelAndView upload = fileUpload.novoAvatar(mockMultipartFile, request);
 		Map<String, Object> model = upload.getModel();
 		System.out.println(model.get("msg"));
 
@@ -57,10 +81,10 @@ public class UploadAvatarControllerTest {
 
 	@Test
 	public void x() {
-		Assert.assertTrue(fileUpload.regex.matcher("image/pjpeg").matches());
-		Assert.assertTrue(fileUpload.regex.matcher("image/jpg").matches());
-		Assert.assertTrue(fileUpload.regex.matcher("image/GIF").matches());
-		Assert.assertTrue(fileUpload.regex.matcher("image/pnG").matches());
+		assertTrue(fileUpload.regex.matcher("image/pjpeg").matches());
+		assertTrue(fileUpload.regex.matcher("image/jpg").matches());
+		assertTrue(fileUpload.regex.matcher("image/GIF").matches());
+		assertTrue(fileUpload.regex.matcher("image/pnG").matches());
 	}
 
 }
