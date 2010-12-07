@@ -24,7 +24,7 @@ public class UploadAvatarController {
 
 	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
 
-	private static final int MAX_FILE_SIZE = 10240000;
+	static final int MAX_FILE_SIZE = 10240000;
 
 	Pattern regex = Pattern.compile(".*(gif|/p?jpe?g|/png)", Pattern.CASE_INSENSITIVE);
 
