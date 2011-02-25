@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.service.LigaAiService;
@@ -41,8 +42,14 @@ public class LigaAiController {
 
 	@RequestMapping("/l/novo")
 	public ModelAndView criar(@Valid LigaAi ligaAi, HttpServletRequest request) {
+		User user = $.getUserFromRequest(request);
+
+		if (user == null) {
+			return new ModelAndView(new RedirectView("/"));
+		}
+
 		ModelAndView mav = new ModelAndView("l/ligaai");
-		ligaAi.setUser($.getUserFromRequest(request));
+		ligaAi.setUser(user);
 		ligaAi.setRemoteAddress(request.getRemoteAddr());
 		ligaAiUtils.fillTags(ligaAi);
 		ligaAi = ligaAiService.merge(ligaAi);
